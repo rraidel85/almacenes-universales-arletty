@@ -1,0 +1,19 @@
+table thead{
+    background-color:#6777ef;
+}
+table th{
+    color: #fff;
+}
+.login-page, .register-page{
+    background-image: url('../fotos/login.jpg');
+    /* background-color: #cccccc; */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.login-logo a, .register-logo a{
+    color: #fff !important;
+}
+.login-card-body, .register-card-body{
+    background-color: #e2eef9;
+}

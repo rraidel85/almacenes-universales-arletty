@@ -1,0 +1,20 @@
+// Fonts
+// @import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+// @import 'variables';
+
+// Bootstrap
+// @import '~bootstrap/scss/bootstrap';
+
+
+@import "~select2/dist/css/select2.css";
+
+.sidebar-blue-light{
+    background: #10163a;
+    color: rgb(218, 221, 236);
+}
+
+.active{
+    background: linear-gradient(118deg,#0486ba,rgba(4,134,186,.7));
+}
