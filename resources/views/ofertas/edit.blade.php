@@ -35,3 +35,12 @@
         </div>
     </div>
 @endsection
+
+
+@push('third_party_scripts')
+    <script>
+        let stocks_seleccionados = @json($stocks_seleccionados);
+        $('#stockSelect').val(stocks_seleccionados); 
+        $('#stockSelect').trigger('change');
+    </script>
+@endpush

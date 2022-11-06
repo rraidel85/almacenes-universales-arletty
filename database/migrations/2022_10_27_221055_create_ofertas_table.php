@@ -17,7 +17,7 @@ class CreateOfertasTable extends Migration
         Schema::create('ofertas', function (Blueprint $table) {
             $table->id();
             $table->date('fecha');
-            $table->boolean('facturado');
+            $table->boolean('facturado')->default(false);
             $table->timestamps();
         });
     }

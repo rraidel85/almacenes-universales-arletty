@@ -1,17 +1,20 @@
 
     <table class="table table-striped mt-2 table-bordered" id="ofertas-table">
         <thead>
-        
-            <th>Fecha</th>
-        <th>Facturado</th>
+        <th>Fecha</th>
+        <th>Productos</th>
         <th class="notexport">Opciones</th>
-    
         </thead>
         <tbody>
         @foreach($ofertas as $oferta)
             <tr>
                 <td>{{ $oferta->fecha }}</td>
-            <td>{{ $oferta->facturado }}</td>
+                <td>@foreach($oferta->stock_producto as $stock)
+                    <span class="badge badge-primary" style="font-size: 90%">
+                        {{ $stock->cantidad.' '.$stock->producto->nombre }}
+                    </span>   
+                @endforeach
+                </td>
                 <td width="120">
                     {!! Form::open(['route' => ['ofertas.destroy', $oferta->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

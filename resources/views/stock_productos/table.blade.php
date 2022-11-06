@@ -17,13 +17,13 @@
         <tbody>
         @foreach($stockProductos as $stockProducto)
             <tr>
+                <td>{{ $stockProducto->recepcion_ciega->numerofactura }}</td>
+                <td>{{ $stockProducto->producto->nombre }}</td>
                 <td>{{ $stockProducto->cantidad }}</td>
-            <td>{{ $stockProducto->precio_compra }}</td>
+                <td>{{ $stockProducto->precio_compra }}</td>
             <td>{{ $stockProducto->fecha_entrada }}</td>
             <td>{{ $stockProducto->feha_produccion }}</td>
             <td>{{ $stockProducto->fecha_vencimiento }}</td>
-            <td>{{ $stockProducto->producto->nombre }}</td>
-            <td>{{ $stockProducto->recepcion_ciega->numerofactura }}</td>
             <td>{{ $stockProducto->areas->nombre }}</td>
                 <td width="120">
                     {!! Form::open(['route' => ['stockProductos.destroy', $stockProducto->id], 'method' => 'delete']) !!}

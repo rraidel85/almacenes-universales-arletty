@@ -95,7 +95,8 @@ class StockProducto extends Model
 
  public function ofertas()
   {
-      return $this->belongsToMany(Oferta::class, 'oferta_id');
+      return $this->belongsToMany(Oferta::class, 
+      'stock_producto_oferta', 'stock_producto_id', 'oferta_id');
  }
     
 }

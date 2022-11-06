@@ -25,7 +25,6 @@ class Oferta extends Model
 
     public $fillable = [
         'fecha',
-        'facturado'
     ];
 
     /**
@@ -36,7 +35,6 @@ class Oferta extends Model
     protected $casts = [
         'id' => 'integer',
         'fecha' => 'date',
-        'facturado' => 'boolean'
     ];
 
     /**
@@ -46,12 +44,13 @@ class Oferta extends Model
      */
     public static $rules = [
         'fecha'=>'required|date',
-        
+        'stocks' => 'required|array'
     ];
 
     public function stock_producto()
     {
-        return $this->belongsToMany(StockProducto::class, 'stock_producto_id');
+        return $this->belongsToMany(StockProducto::class, 
+        'stock_producto_oferta', 'oferta_id', 'stock_producto_id');
    }
     
    public function factura()

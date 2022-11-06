@@ -1,9 +1,3 @@
-<!-- Id Field -->
-<div class="col-sm-12">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{{ $oferta->id }}</p>
-</div>
-
 <!-- Fecha Field -->
 <div class="col-sm-12">
     {!! Form::label('fecha', 'Fecha:') !!}
@@ -12,8 +6,10 @@
 
 <!-- Facturado Field -->
 <div class="col-sm-12">
-    {!! Form::label('facturado', 'Facturado:') !!}
-    <p>{{ $oferta->facturado }}</p>
+    {!! Form::label('stocks', 'Stocks de productos:') !!}
+    @foreach($oferta->stock_producto as $stock)
+        <p>-{{ $stock->cantidad.' '.$stock->producto->nombre }}</p>
+    @endforeach
 </div>
 
 

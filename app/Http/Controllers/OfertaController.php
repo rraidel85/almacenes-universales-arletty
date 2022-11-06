@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateOfertaRequest;
 use App\Repositories\OfertaRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Cliente;
+use App\Models\StockProducto;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -43,8 +44,8 @@ class OfertaController extends AppBaseController
      */
     public function create()
     {
-       
-        return view('ofertas.create');
+        $stocks = StockProducto::all();
+        return view('ofertas.create', compact('stocks'));
     }
 
     /**
@@ -60,7 +61,9 @@ class OfertaController extends AppBaseController
 
         $oferta = $this->ofertaRepository->create($input);
 
-        Flash::success('Oferta se a guardado corectamente.');
+        $oferta->stock_producto()->attach($request->stocks);
+
+        Flash::success('Oferta se ha guardado corectamente.');
 
         return redirect(route('ofertas.index'));
     }
@@ -102,7 +105,11 @@ class OfertaController extends AppBaseController
             return redirect(route('ofertas.index'));
         }
 
-        return view('ofertas.edit')->with('oferta', $oferta);
+        $stocks = StockProducto::all();
+
+        $stocks_seleccionados = $oferta->stock_producto->pluck('id');
+
+        return view('ofertas.edit', compact('oferta', 'stocks', 'stocks_seleccionados'));
     }
 
     /**
@@ -124,6 +131,8 @@ class OfertaController extends AppBaseController
         }
 
         $oferta = $this->ofertaRepository->update($request->all(), $id);
+
+        $oferta->stock_producto()->sync($request->stocks);
 
         Flash::success('Oferta se ha editado corectamente.');
 
