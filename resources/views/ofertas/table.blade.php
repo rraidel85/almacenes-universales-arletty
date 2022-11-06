@@ -3,6 +3,7 @@
         <thead>
         <th>Fecha</th>
         <th>Productos</th>
+        <th>Facturado</th>
         <th class="notexport">Opciones</th>
         </thead>
         <tbody>
@@ -13,7 +14,14 @@
                     <span class="badge badge-primary" style="font-size: 90%">
                         {{ $stock->cantidad.' '.$stock->producto->nombre }}
                     </span>   
-                @endforeach
+                    @endforeach
+                </td>
+                <td style="text-align: center">
+                    @if ($oferta->facturado)
+                    <i class="fas fa-check-circle" style="font-size:25px; color:green"></i>
+                    @else
+                    <i class="fa fa-times-circle" style="font-size:25px; color:red"></i>
+                    @endif
                 </td>
                 <td width="120">
                     {!! Form::open(['route' => ['ofertas.destroy', $oferta->id], 'method' => 'delete']) !!}
