@@ -10,6 +10,6 @@
 </div>
 
 <div class="form-group col-sm-6">
-    {!! Form::label('almacenes_id', 'Almacen:') !!}
-    {!! Form::select('almacenes_id', $almacenes, null, ['class' => 'form-control custom-select' ]) !!}
+    {!! Form::label('almacen_id', 'Almacen:') !!}
+    {!! Form::select('almacen_id', $almacenes, null, ['class' => 'form-control custom-select' ]) !!}
 </div>

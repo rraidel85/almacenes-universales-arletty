@@ -25,7 +25,7 @@ class Area extends Model
     public $fillable = [
         'nombre',
         'descripcion',
-        'almacenes_id'
+        'almacen_id'
        
     ];
 
@@ -38,7 +38,7 @@ class Area extends Model
         'nombre' => 'string',
         'descripcion' => 'string',
         'id' => 'integer',
-        'almacenes_id' => 'integer'
+        'almacen_id' => 'integer'
         
     ];
 
@@ -63,7 +63,7 @@ class Area extends Model
     //area pertenece a un almacen
     public function almacenes()
   {
-      return $this->belongsTo(Almacen::class);
+      return $this->belongsTo(Almacen::class, 'almacen_id');
  }
     
 }
