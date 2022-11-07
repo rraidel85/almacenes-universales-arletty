@@ -1,4 +1,4 @@
-<!-- Fecha Field -->
+{{-- <!-- Fecha Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('fecha', 'Fecha:') !!}
     {!! Form::text('fecha', null, ['class' => 'form-control','id'=>'fecha']) !!}
@@ -12,4 +12,4 @@
             sideBySide: true
         })
     </script>
-@endpush
+@endpush --}}

@@ -9,12 +9,12 @@
                 <div class="col-sm-6">
                     <h1>Facturas</h1>
                 </div>
-                <div class="col-sm-6">
+                {{-- <div class="col-sm-6">
                     <a class="btn btn-primary float-right"
                        href="{{ route('facturas.create') }}">
                         Agregar
                     </a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>

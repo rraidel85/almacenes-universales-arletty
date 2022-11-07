@@ -23,7 +23,8 @@ class Factura extends Model
 
 
     public $fillable = [
-        'fecha'
+        'fecha',
+        'oferta_id'
     ];
 
     /**
@@ -43,8 +44,6 @@ class Factura extends Model
      */
     public static $rules = [
         'fecha'=>'required|date',
-        
-        
     ];
 
     public function oferta()

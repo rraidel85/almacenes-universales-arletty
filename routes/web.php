@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FacturaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -112,3 +113,6 @@ Route::resource('ofertas', App\Http\Controllers\OfertaController::class);
 
 
 Route::resource('facturas', App\Http\Controllers\FacturaController::class);
+
+
+Route::get('/crear_factura/{id}', [FacturaController::class, 'crearFactura'])->name('facturas.crearFactura');

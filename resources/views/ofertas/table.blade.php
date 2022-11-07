@@ -2,7 +2,7 @@
     <table class="table table-striped mt-2 table-bordered" id="ofertas-table">
         <thead>
         <th>Fecha</th>
-        <th>Productos</th>
+        <th>Stock Productos</th>
         <th>Facturado</th>
         <th class="notexport">Opciones</th>
         </thead>
@@ -26,14 +26,22 @@
                 <td width="120">
                     {!! Form::open(['route' => ['ofertas.destroy', $oferta->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
+                        @if (!$oferta->facturado)
+                            <a title="Crear factura" href="{{ route('facturas.crearFactura', $oferta->id) }}"
+                                class='btn btn-light bg-purple'>
+                                <i class="far fa-file"></i>
+                            </a>
+                        @endif
                         <a href="{{ route('ofertas.show', [$oferta->id]) }}"
                             class='btn btn-light bg-green'>
                             <i class="far fa-eye"></i>
                         </a>
-                        <a href="{{ route('ofertas.edit', [$oferta->id]) }}"
-                            class='btn btn-light bg-blue'>
-                            <i class="far fa-edit"></i>
-                        </a>
+                        @if (!$oferta->facturado)
+                            <a href="{{ route('ofertas.edit', [$oferta->id]) }}"
+                                class='btn btn-light bg-blue'>
+                                <i class="far fa-edit"></i>
+                            </a>
+                        @endif
                         {!! Form::button('<i class="far fa-trash-alt"></i>', ['type' => 'submit', 'class' => 'btn btn-light bg-danger', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}

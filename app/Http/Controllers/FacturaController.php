@@ -6,6 +6,8 @@ use App\Http\Requests\CreateFacturaRequest;
 use App\Http\Requests\UpdateFacturaRequest;
 use App\Repositories\FacturaRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Factura;
+use App\Models\Oferta;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
@@ -141,6 +143,9 @@ class FacturaController extends AppBaseController
     {
         $factura = $this->facturaRepository->find($id);
 
+        $factura->oferta->facturado = false;
+        $factura->oferta->save();
+
         if (empty($factura)) {
             Flash::error('Factura not found');
 
@@ -152,5 +157,17 @@ class FacturaController extends AppBaseController
         Flash::success('Factura se ha eliminado corectamente.');
 
         return redirect(route('facturas.index'));
+    }
+
+    public function crearFactura($ofertaId){
+        $factura = Factura::create([
+            'fecha' => now()->format('Y-m-d'),
+            'oferta_id' => $ofertaId
+        ]);
+
+        $factura->oferta->facturado = true;
+        $factura->oferta->save();
+
+        return redirect(route('facturas.show', [$factura->id]));
     }
 }
